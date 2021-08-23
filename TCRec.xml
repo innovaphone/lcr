@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<voicemail xmlns="http://www.innovaphone.com/xsd/voicemail6.xsd">
+ <!-- =======================  Threat Call Recording XML inno srl 2013 =============================== -->
+ <!-- This XML works only with the innovaphone voice recorder application -->
+
+    <function define="Main">
+        <pbx-getcallinfo out-cgpn="$cgpn" out-leg2="$leg2"/>
+	<assign out="$zTN" value="$leg2"/> 
+        <pbx-finduser-e164 e164="$cgpn" out-cn="$cn" />
+	<switch var="$leg2">
+            <case equal="">
+                <assign out="$zTN" value="$cgpn"/> 
+            </case>
+        </switch>	
+	<store-getstat root="TMP" name="/" out-error="$error" /> 
+	<if cond="$error">
+		<store-mkdir root="TMP" name="/"/>  
+	</if>
+	<assign out="$rctrl" value=""/> 
+	<lib-strcat string="$rctrl" string2="TCA-" out-string="$rctrl" />
+	<lib-strcat string="$rctrl" string2="$cgpn" out-string="$rctrl" />
+       	<lib-strcat string="$rctrl" string2="_" out-string="$rctrl" />
+	<lib-strcat string="$rctrl" string2="$zTN" out-string="$rctrl" />	
+	<lib-strcat string="$rctrl" string2=".txt" out-string="$rctrl" />	
+	<assign out="$asdf" value=""/> 
+	<store-cookie root="TMP" name="$rctrl" value="$asdf"/>
+	<switch var="$leg2">
+            <case equal="">
+		<assign out="$Playfile" value="Track1.g711a"/> 
+		<store-get root="" name="Track1.g711a" out-url="$ctrl" /> 
+  		<pbx-prompt url="$ctrl" /> 
+            </case>
+	    <case not-equal="">
+		<assign out="$Playfile" value="Track2.g711a"/> 
+                <store-get root="" name="$Playfile" out-url="$ctrl" /> 
+  		<pbx-prompt url="$ctrl" />              
+            </case>
+        </switch>
+	<wait sec="2"/>
+	<pbx-disc/>
+    </function>
+</voicemail>
+<!-- LastCallRepeat wiki-src/xml/LCR 1,0,0,0 (C) innovaphone AG 2010-2013 -->
