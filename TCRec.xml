@@ -22,7 +22,7 @@
        	<lib-strcat string="$rctrl" string2="_" out-string="$rctrl" />
 	<lib-strcat string="$rctrl" string2="$zTN" out-string="$rctrl" />	
 	<lib-strcat string="$rctrl" string2=".txt" out-string="$rctrl" />	
-	<assign out="$asdf" value=""/> 
+	<assign out="$asdf" value="X"/> 
 	<store-cookie root="TMP" name="$rctrl" value="$asdf"/>
 	<switch var="$leg2">
             <case equal="">
@@ -40,4 +40,4 @@
 	<pbx-disc/>
     </function>
 </voicemail>
-<!-- LastCallRepeat wiki-src/xml/LCR 1,0,0,0 (C) innovaphone AG 2010-2013 -->
+<!-- LastCallRepeat wiki-src/xml/LCR 1,0,4,0 (C) innovaphone AG 2010-2016 -->
