@@ -11,12 +11,12 @@
     </function>
 
     <function define="Recording">
-	 <store-get root="$cn" name="personal/LCR.$coder" out-url="$ctrl"/>
+	 <store-get root="$cn" name="personal/LCR.g711a" out-url="$ctrl"/>
          <pbx-record url="$ctrl"/>
     </function>
     <function define="Playback">
 	 <call name="MakeDir"/>
- 	 <store-get root="$cn" name="personal/LCR.$coder" out-url="$ctrl"/>
+ 	 <store-get root="$cn" name="personal/LCR.g711a" out-url="$ctrl"/>
 	 <while notcond="$pin-ok">
         	 <pbx-prompt url="$ctrl" barge-in="true"/>
 	 </while>
@@ -26,7 +26,7 @@
 	<event type="timer" name="vbguard">
   		<pbx-disc /> 
   	</event>
-	<timer name="vbguard" sec="6000" barge-in="true" />
+	<timer name="vbguard" sec="600" barge-in="true" />
 	<pbx-getcallinfo out-cgpn="$cgpn" out-cdpn="$cdpn" out-leg2="$leg2" />
 	<pbx-finduser-e164 e164="$cgpn" out-cn="$cn" />
 	<dbg string="$cn"/> 
@@ -39,3 +39,5 @@
         </while>
  </function>
 </voicemail>
+
+<!-- LastCallRepeat wiki-src/xml/LCR 1,0,0,0 (C) innovaphone AG 2010-2013 -->
