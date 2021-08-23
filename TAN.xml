@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<voicemail xmlns="http://www.innovaphone.com/xsd/voicemail6.xsd">
+ <!-- =======================  TAN XML innovaphone 2016 =============================== -->
+ <!-- This XML works only with the innovaphone voice recorder application -->
+    <function define="Main">
+	<pbx-disc/>
+    </function>
+</voicemail>
+<!-- LastCallRepeat wiki-src/xml/LCR 1,0,5,0 (C) innovaphone AG 2010-2017 -->
